@@ -58,8 +58,9 @@
   .li{display:flex;align-items:center;gap:12px;font-size:23px;font-weight:600;white-space:nowrap}
   .li svg{flex:none}
 
-  .facts{display:flex;gap:10px;margin-top:26px;flex-wrap:nowrap}
-  .fact{border:2px solid rgba(255,255,255,.28);border-radius:999px;padding:10px 17px;font-size:19.5px;font-weight:700;white-space:nowrap}
+  .facts{display:flex;gap:8px;margin-top:26px;flex-wrap:nowrap}
+  .fact{border:2px solid rgba(255,255,255,.28);border-radius:999px;padding:10px 15px;font-size:18.5px;font-weight:700;white-space:nowrap}
+  .fact.gold{background:var(--yellow);border-color:var(--yellow);color:var(--bg);font-weight:800}
 
   .bottom{margin-top:auto;padding-top:34px;display:flex;gap:24px;align-items:stretch}
   .price{background:#fff;color:var(--bg);border-radius:28px;padding:22px 28px;min-width:390px}
@@ -75,6 +76,8 @@
   .foot{margin-top:18px;font-size:18px;color:var(--muted);display:flex;justify-content:space-between}
 
   /* ---- story (1080x1920) ---- */
+  .story-only{display:none}
+  body.story .story-only{display:inline} body.story .feed-only{display:none}
   body.story .wrap{padding:150px 72px 170px}
   body.story h1{font-size:88px;margin-top:70px}
   body.story .sub{font-size:33px}
@@ -86,6 +89,7 @@
   body.story .learn{margin-top:36px}
   body.story .facts{margin-top:28px}
   body.story .bottom{flex-direction:column}
+  body.story .cta .big{font-size:31px}
   body.story .price{display:flex;align-items:center;justify-content:space-between}
 </style>
 </head>
@@ -135,9 +139,9 @@
 
   <div class="facts">
     <div class="fact">6 долоо хоног</div>
-    <div class="fact">Бүрэн онлайн, бичлэгтэй</div>
+    <div class="fact">Онлайн, бичлэгтэй</div>
     <div class="fact">Шууд Zoom дадлага</div>
-    <div class="fact">Гэрчилгээтэй</div>
+    <div class="fact gold">Google-ийн гэрчилгээтэй</div>
   </div>
 
   <div class="bottom">
@@ -149,7 +153,7 @@
       <div class="lim"><svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#14935A"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Үнэд AI эрх багтсан</div>
     </div>
     <div class="cta">
-      <div class="big"><span class="nw">Messenger-т</span> <span class="kw">“AI”</span> гэж бичээд бүртгүүлээрэй</div>
+      <div class="big"><span class="feed-only">Коммент хэсэгт</span><span class="story-only">Мессежээр</span> <span class="kw">“AI”</span> гэж бичээд бүртгэлээ аваарай</div>
       <div class="small">🎁 Бүртгүүлсэн багш бүрт “100 бэлэн prompt” бэлэглэнэ</div>
     </div>
   </div>
