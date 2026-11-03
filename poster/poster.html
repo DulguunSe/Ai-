@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<style>
+  :root{
+    --bg:#0B1640; --bg2:#14246B; --ink:#FFFFFF; --muted:#B9C3EC;
+    --yellow:#FFC93C; --coral:#FF6B5B; --card:#FFFFFF; --cardInk:#0B1640;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1350px;}
+  body.story, body.story html{height:1920px}
+  body{
+    font-family:"Inter","Inter Display",sans-serif;color:var(--ink);
+    background:
+      radial-gradient(900px 600px at 95% 0%, rgba(255,107,91,.28), transparent 60%),
+      radial-gradient(800px 700px at 0% 100%, rgba(255,201,60,.18), transparent 60%),
+      linear-gradient(160deg,var(--bg2),var(--bg) 55%);
+    position:relative;overflow:hidden;
+  }
+  body::before{ /* subtle grid */
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:54px 54px;
+  }
+  .wrap{position:relative;height:100%;padding:64px 72px 56px;display:flex;flex-direction:column}
+  .top{display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;align-items:center;gap:14px;font-family:"Inter Display";font-weight:800;font-size:28px;letter-spacing:.02em}
+  .logo{width:52px;height:52px;border-radius:14px;background:var(--yellow);color:var(--bg);display:grid;place-items:center;font-weight:900;font-size:22px}
+  .tag{background:var(--coral);color:#fff;font-weight:800;font-size:21px;letter-spacing:.06em;padding:12px 22px;border-radius:999px}
+  h1{font-family:"Inter Display";font-weight:900;font-size:84px;line-height:1.04;letter-spacing:-.025em;margin-top:44px}
+  h1 .hl{color:var(--yellow);position:relative;white-space:nowrap}
+  h1 .strike{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:7px}
+  .sub{font-size:29px;line-height:1.35;color:var(--muted);margin-top:20px;max-width:860px}
+  .sub b{color:#fff;font-weight:700}
+
+  .mid{display:flex;gap:28px;margin-top:34px;align-items:stretch}
+  .chat{flex:1.35;background:var(--card);color:var(--cardInk);border-radius:28px;padding:26px 26px 22px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+  .bubble{background:#EEF1FB;border-radius:18px 18px 18px 6px;padding:16px 18px;font-size:20px;line-height:1.4}
+  .bubble .who{font-size:15px;font-weight:800;color:#5A67A8;letter-spacing:.06em;margin-bottom:6px}
+  .ans{margin-top:16px}
+  .ans .who{font-size:15px;font-weight:800;color:var(--coral);letter-spacing:.06em;margin-bottom:10px}
+  .row{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font-size:18px;padding:9px 0;border-top:1px solid #E3E7F5}
+  .row .k{font-weight:700}
+  .row .t{color:#5A67A8;text-align:right;font-weight:600}
+  .bar{height:10px;border-radius:6px;background:#DDE3F7}
+  .done{margin-top:12px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:#14935A}
+  .stat{flex:1;display:flex;flex-direction:column;gap:20px}
+  .bigstat{flex:1;background:var(--yellow);color:var(--bg);border-radius:28px;padding:28px 26px;display:flex;flex-direction:column;justify-content:center}
+  .bigstat .from{font-size:30px;font-weight:700;opacity:.75;text-decoration:line-through}
+  .bigstat .to{font-family:"Inter Display";font-size:76px;font-weight:900;line-height:1;letter-spacing:-.03em}
+  .bigstat .lbl{font-size:21px;font-weight:700;margin-top:8px;line-height:1.25}
+  .save{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);border-radius:24px;padding:20px 22px;font-size:21px;line-height:1.3}
+  .save b{color:var(--yellow);font-size:30px;font-family:"Inter Display";font-weight:900;display:block}
+
+  .learn{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin-top:32px}
+  .li{display:flex;align-items:center;gap:14px;font-size:25px;font-weight:600}
+  .li svg{flex:none}
+
+  .facts{display:flex;gap:10px;margin-top:26px;flex-wrap:nowrap}
+  .fact{border:2px solid rgba(255,255,255,.28);border-radius:999px;padding:10px 17px;font-size:19.5px;font-weight:700;white-space:nowrap}
+
+  .bottom{margin-top:auto;padding-top:30px;display:flex;gap:24px;align-items:stretch}
+  .price{background:#fff;color:var(--bg);border-radius:28px;padding:22px 28px;min-width:390px}
+  .price .eb{font-size:17px;font-weight:800;letter-spacing:.08em;color:var(--coral)}
+  .price .now{font-family:"Inter Display";font-size:64px;font-weight:900;letter-spacing:-.02em;line-height:1.05}
+  .price .old{font-size:24px;font-weight:700;color:#7A84B3;text-decoration:line-through;margin-left:8px}
+  .price .lim{font-size:19px;font-weight:700;margin-top:4px}
+  .cta{flex:1;background:var(--coral);border-radius:28px;padding:22px 28px;display:flex;flex-direction:column;justify-content:center}
+  .cta .big{font-family:"Inter Display";font-size:33px;font-weight:900;line-height:1.15}
+  .cta .big span{background:#fff;color:var(--coral);padding:0 12px;border-radius:10px}
+  .cta .small{font-size:19px;font-weight:600;margin-top:10px;line-height:1.35}
+  .foot{margin-top:18px;font-size:18px;color:var(--muted);display:flex;justify-content:space-between}
+
+  /* ---- story (1080x1920) ---- */
+  body.story .wrap{padding:150px 72px 170px}
+  body.story h1{font-size:88px;margin-top:70px}
+  body.story .sub{font-size:33px}
+  body.story .mid{flex-direction:column;margin-top:44px}
+  body.story .save{display:flex;flex-direction:column;justify-content:center}
+  body.story .stat{flex-direction:row}
+  body.story .bigstat{flex:1.2}
+  body.story .learn{margin-top:36px}
+  body.story .facts{margin-top:28px}
+  body.story .bottom{flex-direction:column}
+  body.story .price{display:flex;align-items:center;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">AI</div>AI БАГШ АКАДЕМИ</div>
+    <div class="tag">1-Р ЭЭЛЖ · БҮРТГЭЛ ЭХЭЛЛЭЭ</div>
+  </div>
+
+  <h1>Хичээлээ <span class="strike">2 цагт</span> биш,<br><span class="hl">20 минутад</span> бэлтгэ.</h1>
+  <p class="sub">Багш нарт зориулсан, <b>монгол хэл дээрх</b>, хамгийн практик <b>AI онлайн сургалт</b></p>
+
+  <div class="mid">
+    <div class="chat">
+      <div class="bubble">
+        <div class="who">БАГШ</div>
+        3-р анги, математик. “Үржүүлэх нь давтан нэмэх” сэдвээр 40 минутын хичээлийн төлөвлөгөө гарга.
+      </div>
+      <div class="ans">
+        <div class="who">AI ТУСЛАХ</div>
+        <div class="row"><span class="k">Сэдэлжүүлэх</span><span class="bar" style="width:55%"></span><span class="t">5 мин</span></div>
+        <div class="row"><span class="k">Шинэ мэдлэг</span><span class="bar" style="width:90%"></span><span class="t">15 мин</span></div>
+        <div class="row"><span class="k">Бүлгийн ажил</span><span class="bar" style="width:75%"></span><span class="t">12 мин</span></div>
+        <div class="row"><span class="k">Үнэлгээ</span><span class="bar" style="width:45%"></span><span class="t">8 мин</span></div>
+        <div class="done">
+          <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#14935A"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ажлын хуудас, тест бас бэлэн
+        </div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="bigstat">
+        <div class="to">5+ цаг</div>
+        <div class="lbl">долоо хоног бүр хэмнэж, гэр бүлдээ зарцуул</div>
+      </div>
+      <div class="save"><b>Хаанаас ч</b>утаснаасаа суралцана. Тусгай мэдлэг шаардлагагүй</div>
+    </div>
+  </div>
+
+  <div class="learn">
+    <div class="li"><svg width="34" height="34" viewBox="0 0 24 24"><rect width="24" height="24" rx="7" fill="#FFC93C"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#0B1640" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Хичээлийн төлөвлөгөө</div>
+    <div class="li"><svg width="34" height="34" viewBox="0 0 24 24"><rect width="24" height="24" rx="7" fill="#FFC93C"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#0B1640" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Тест, рубрик, үнэлгээ</div>
+    <div class="li"><svg width="34" height="34" viewBox="0 0 24 24"><rect width="24" height="24" rx="7" fill="#FFC93C"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#0B1640" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Слайд, ажлын хуудас</div>
+    <div class="li"><svg width="34" height="34" viewBox="0 0 24 24"><rect width="24" height="24" rx="7" fill="#FFC93C"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#0B1640" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>AI-г ёс зүйтэй ашиглах</div>
+  </div>
+
+  <div class="facts">
+    <div class="fact">6 долоо хоног</div>
+    <div class="fact">100% онлайн, бичлэгтэй</div>
+    <div class="fact">Шууд Zoom дадлага</div>
+    <div class="fact">Гэрчилгээтэй</div>
+  </div>
+
+  <div class="bottom">
+    <div class="price">
+      <div>
+        <div class="eb">ЭРТ БҮРТГЭЛИЙН ҮНЭ</div>
+        <div class="now">179,000₮<span class="old">249,000₮</span></div>
+      </div>
+      <div class="lim">Зөвхөн эхний 100 багшид</div>
+    </div>
+    <div class="cta">
+      <div class="big">Messenger-т <span>“AI”</span> гэж бичээд бүртгүүлээрэй</div>
+      <div class="small">🎁 Бүртгүүлсэн бүх багшид “100 бэлэн prompt” үнэгүй</div>
+    </div>
+  </div>
+  <div class="foot"><span>Эхний 2 хичээлийн дараа сэтгэл ханамжгүй бол 100% буцаан олгоно</span><span>Хуваан төлөх боломжтой</span></div>
+</div>
+<script>if(location.hash==="#story"){document.body.classList.add("story");document.documentElement.style.height="1920px";document.body.style.height="1920px"}</script>
+</body>
+</html>
