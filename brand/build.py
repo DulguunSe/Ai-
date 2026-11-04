@@ -54,20 +54,41 @@ write("src/fb-profile.html",
       f'<div style="position:absolute;inset:0;background:radial-gradient(520px 520px at 50% 50%,#1A2C78,transparent 72%)"></div>'
       f'<div style="width:900px;height:900px;position:relative">{mark(GOLD, CORAL)}</div></div>', 1080, 1080)
 
-# --- Facebook cover (brand, not promo). Safe centre 1109px for mobile.
-cover_pattern = "".join(
-    f'<div style="position:absolute;left:{x}px;top:{y}px;width:{s}px;height:{s}px;opacity:{o}">{spark(c, s)}</div>'
-    for x,y,s,c,o in [(1185,70,120,GOLD,1),(1300,250,64,CORAL,1),(1130,330,40,"#FFFFFF",.5),(1420,110,36,"#FFFFFF",.35),(1460,400,90,"#FFFFFF",.14),(70,420,60,"#FFFFFF",.12),(190,80,30,"#FFFFFF",.25)])
+# --- Facebook cover (brand, not promo). Mobile shows centre 1109px (x 265-1374).
+def pill(text, bg, fg, border=None, x=0, y=0, rot=0, size=19):
+    b = f"border:2px solid {border};" if border else ""
+    return (f'<div style="position:absolute;left:{x}px;top:{y}px;transform:rotate({rot}deg);background:{bg};color:{fg};{b}'
+            f'border-radius:999px;padding:11px 20px;font-weight:800;font-size:{size}px;white-space:nowrap;box-shadow:0 12px 28px rgba(0,0,0,.28)">{text}</div>')
+chk = '<svg width="20" height="20" viewBox="0 0 24 24" style="display:inline-block;width:20px;height:20px;vertical-align:-4px;margin-right:6px"><circle cx="12" cy="12" r="12" fill="#14935A"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+chat = (f'<div style="position:absolute;left:930px;top:150px;width:390px;background:#fff;color:{NAVY};border-radius:26px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.4)">'
+        f'<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="width:34px;height:34px">{mark(GOLD,CORAL,NAVY)}</div>'
+        f'<div style="font-weight:800;font-size:16px">AI туслах</div><div style="margin-left:auto;width:9px;height:9px;border-radius:50%;background:#14935A"></div></div>'
+        f'<div style="background:{SKY};border-radius:16px 16px 16px 5px;padding:13px 15px;font-size:16px;line-height:1.4">5-р ангийн уншлагын хичээлд 3 түвшний даалгавар гаргаж өгөөч.</div>'
+        f'<div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">'
+        + "".join(f'<div style="display:flex;align-items:center;gap:10px;font-size:15px"><span style="width:62px;font-weight:800;color:{c}">{lv}</span><i style="flex:1;height:9px;border-radius:5px;background:#DDE3F7;max-width:{w}%"></i></div>'
+                  for lv,c,w in [("Суурь","#5A67A8",60),("Дунд",NAVY,80),("Ахисан",CORAL,95)])
+        + f'</div><div style="margin-top:14px;font-weight:800;font-size:15px;color:#14935A">{chk}Бэлэн боллоо</div></div>')
+deco = "".join(
+    f'<div style="position:absolute;left:{x}px;top:{y}px;width:{sz}px;height:{sz}px;opacity:{o}">{spark(c, sz)}</div>'
+    for x,y,sz,c,o in [(1290,92,84,GOLD,1),(880,440,46,CORAL,1),(1450,300,60,"#FFFFFF",.22),(1520,120,30,"#FFFFFF",.3),(1490,470,40,GOLD,.5),(205,95,26,"#FFFFFF",.25)])
 write("src/fb-cover.html",
-      f'<div style="width:1640px;height:624px;background:{NAVY};position:relative;overflow:hidden">'
-      f'<div style="position:absolute;inset:0;background:radial-gradient(700px 520px at 82% 40%,{NAVY2},transparent 70%)"></div>'
-      f'<div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.10) 1.4px,transparent 1.5px);background-size:30px 30px;'
-      f'mask-image:linear-gradient(90deg,transparent 10%,#000 60%);-webkit-mask-image:linear-gradient(90deg,transparent 10%,#000 60%)"></div>'
-      f'{cover_pattern}'
-      f'<div style="position:absolute;left:300px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center">'
-      f'{lockup(True,1.25)}'
-      f'<div style="font-family:Inter Display;font-weight:800;font-size:46px;letter-spacing:-.015em;color:#fff;margin-top:44px;line-height:1.12">Ухаалаг багш —<br><span style="color:{GOLD}">ирээдүйн анги.</span></div>'
-      f'<div style="font-size:21px;color:{MIST};margin-top:18px">Монгол багш нарт зориулсан AI сургалт</div>'
+      f'<div style="width:1640px;height:624px;background:{NAVY};position:relative;overflow:hidden;font-family:Inter">'
+      f'<div style="position:absolute;inset:0;background:radial-gradient(640px 460px at 72% 50%,#1B2D80,transparent 70%)"></div>'
+      f'<div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.11) 1.4px,transparent 1.5px);background-size:30px 30px;'
+      f'mask-image:linear-gradient(90deg,transparent 20%,#000 65%);-webkit-mask-image:linear-gradient(90deg,transparent 20%,#000 65%)"></div>'
+      # big faint brand book behind the composition
+      f'<div style="position:absolute;inset:0;transform:translateX(-55px)">'
+      f'<div style="position:absolute;left:870px;top:40px;width:560px;height:560px;opacity:.07">{mark("#FFFFFF","#FFFFFF")}</div>'
+      f'{deco}{chat}'
+      + pill("Хичээлийн төлөвлөгөө", GOLD, NAVY, x=870, y=92, rot=-4)
+      + pill("Тест ба рубрик", NAVY2, "#fff", border="rgba(255,255,255,.45)", x=1215, y=478, rot=3)
+      + pill("Слайд", CORAL, "#fff", x=905, y=495, rot=-3)
+      + pill("Ажлын хуудас", "#fff", NAVY, x=1235, y=300, rot=5, size=17)
+      + '</div>'
+      + f'<div style="position:absolute;left:300px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center">'
+      f'{lockup(True,1.1)}'
+      f'<div style="font-family:Inter Display;font-weight:900;font-size:54px;letter-spacing:-.02em;color:#fff;margin-top:40px;line-height:1.06">Ухаалаг багш —<br><span style="color:{GOLD}">ирээдүйн анги.</span></div>'
+      f'<div style="font-size:21px;color:{MIST};margin-top:18px;line-height:1.45">Монгол багш нарт зориулсан,<br>монгол хэл дээрх AI сургалт</div>'
       f'</div></div>', 1640, 624)
 
 # --- Brand guide (16:9 pages)
