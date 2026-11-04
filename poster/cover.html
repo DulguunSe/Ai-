@@ -1,0 +1,59 @@
+<!doctype html><html lang="mn"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1640px;height:624px}
+body{font-family:"Inter","Inter Display",sans-serif;color:#fff;position:relative;overflow:hidden;
+  background:radial-gradient(900px 500px at 100% 0%,rgba(255,107,91,.32),transparent 60%),
+             radial-gradient(800px 500px at 0% 100%,rgba(255,201,60,.20),transparent 60%),
+             linear-gradient(160deg,#14246B,#0B1640 60%)}
+body::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:52px 52px}
+/* safe zone: centre 1100px wide (mobile crop) */
+.safe{position:absolute;left:290px;width:1060px;top:0;bottom:0;display:flex;align-items:center;gap:44px}
+.txt{flex:1.45}
+.tag{display:inline-block;background:#FF6B5B;font-weight:800;font-size:19px;letter-spacing:.06em;padding:9px 18px;border-radius:999px}
+h1{white-space:nowrap;font-family:"Inter Display";font-weight:900;font-size:58px;line-height:1.04;letter-spacing:-.025em;margin-top:22px}
+h1 .hl{color:#FFC93C}
+.sub{font-size:24px;color:#B9C3EC;margin-top:16px;line-height:1.35}
+.sub b{color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.chip{border:2px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 15px;font-size:17px;font-weight:700;white-space:nowrap}
+.chip.gold{background:#FFC93C;border-color:#FFC93C;color:#0B1640;font-weight:800}
+.card{flex:.85;background:#fff;color:#0B1640;border-radius:24px;padding:20px 20px 16px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.bubble{background:#EEF1FB;border-radius:16px 16px 16px 5px;padding:12px 14px;font-size:16px;line-height:1.4}
+.who{font-size:12px;font-weight:800;letter-spacing:.06em;color:#5A67A8;margin-bottom:5px}
+.ans .who{color:#FF6B5B;margin:14px 0 6px}
+.row{display:grid;grid-template-columns:118px 1fr 52px;gap:8px;align-items:center;font-size:15px;padding:7px 0;border-top:1px solid #E3E7F5}
+.row b{font-weight:700}.row i{height:8px;border-radius:5px;background:#DDE3F7}.row span{text-align:right;color:#5A67A8;font-weight:600}
+.done{display:flex;gap:8px;align-items:center;margin-top:10px;font-weight:800;font-size:15px;color:#14935A}
+.time{position:absolute;right:-18px;top:-22px;background:#FFC93C;color:#0B1640;font-family:"Inter Display";font-weight:900;font-size:26px;padding:8px 16px;border-radius:14px;transform:rotate(4deg);box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.cardwrap{position:relative;flex:.8}
+.cardwrap .card{flex:none}
+</style></head><body>
+<div class="safe">
+  <div class="txt">
+    <div class="tag">1-Р ЭЭЛЖИЙН БҮРТГЭЛ ЭХЭЛЛЭЭ</div>
+    <h1>Хичээлээ <span class="hl">20 минутад</span><br>бэлтгэе!</h1>
+    <p class="sub">Монгол багш нарт зориулсан, <b>монгол хэл дээрх</b><br>дадлагад суурилсан <b>AI онлайн сургалт</b></p>
+    <div class="chips">
+      <div class="chip">6 долоо хоног</div>
+      <div class="chip">Онлайн, бичлэгтэй</div>
+      <div class="chip gold">Google-ийн гэрчилгээтэй</div>
+      <div class="chip">AI эрх багтсан</div>
+    </div>
+  </div>
+  <div class="cardwrap">
+    <div class="time">20 мин</div>
+    <div class="card">
+      <div class="bubble"><div class="who">БАГШ</div>3-р ангийн математикийн 40 минутын хичээлийн төлөвлөгөө гаргаж өгөөч.</div>
+      <div class="ans"><div class="who">AI ТУСЛАХ</div>
+        <div class="row"><b>Сэдэлжүүлэлт</b><i style="width:55%"></i><span>5 мин</span></div>
+        <div class="row"><b>Шинэ мэдлэг</b><i style="width:90%"></i><span>15 мин</span></div>
+        <div class="row"><b>Бүлгийн ажил</b><i style="width:75%"></i><span>12 мин</span></div>
+        <div class="row"><b>Дүгнэлт</b><i style="width:45%"></i><span>8 мин</span></div>
+        <div class="done"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#14935A"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Ажлын хуудас, тест ч бэлэн</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>
