@@ -6,3 +6,4 @@
 2. [Сургалтын төлөвлөгөө](02-surgaltyn-tolovlogoo.md) — 6 долоо хоногийн хөтөлбөр, хичээл бүрийн агуулга, даалгавар, үнэлгээ, гэрчилгээ
 3. [Facebook пост ба Boost](03-facebook-post-boost.md) — постын тайлбар, автомат хариу, boost-ийн тохиргоо, хэмжүүр
 4. Постер — `poster/` (feed 4:5, story 9:16)
+5. Брэнд — `brand/`: лого (SVG/PNG), Facebook профайл ба cover, [брэндийн гарын авлага (PDF)](brand/brand-guide.pdf). Эх файл: `brand/build.py`
